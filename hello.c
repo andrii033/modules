@@ -1,10 +1,13 @@
-#include <linux/init.h>
+//#include <linux/init.h>
 #include <linux/module.h>
+//#include <asm/current.h>
+#include <linux/sched.h>
 
+MODULE_LICENSE("Dual BSD/GPl");
 
 static int hello_init(void)
 {
-    printk(KERN_INFO "Hello, World!\n");
+    printk(KERN_INFO "The process is %s (pid %i)\n", current->comm, current->pid);
     return 0;
 }
 static void hello_exit(void)
